@@ -1,0 +1,5 @@
+% This file defines the cost Function of the linear regression
+
+def cost=costFunctionLinear(X,Y,theta)
+cost = (Y-X*theta)' * (Y-X*theta);
+end
