@@ -1,0 +1,70 @@
+% addpath('G:\Dataset');
+% X= load('G:\Dataset\ex2x.dat');
+% X=[ones(size(X,1),1) X];
+% Y= load('G:\Dataset\ex2y.dat');
+% No of training samples 
+% m= size(X,1);
+%% Plotting
+% plot(X,Y, 'O');
+
+%% Linear regression using normal equation 
+% Can be used when the matrix X' * X inverse is not computationally expensive
+
+% theta= ((X' * X) ^ -1) * X' * Y;
+% 
+% % % training error
+% Yhat= X*theta;
+% RMSError = sqrt ( 1/m * sum((Yhat - Y).^2));  % Root Mean Squared Error
+%  costLinear= (Y-Yhat)' * (Y - Yhat); % Cost function \ Squared Error
+% plot(X(:,2),Y,'O')
+% hold on;
+% plot(X(:,2),Yhat)
+
+%% Using Gradient descent on linear objective using a random alpha or the step size
+%  Should be used when the inverse of the matrix X' * X is computationally expensive
+
+%  alpha= 0.001
+%   thetaGrad=zeros(size(X,2),1);
+% 
+%   thetaRandom=randn(size(thetaGrad));
+% 
+% m=size(X,1);  
+% i=0;
+% while thetaGrad ~=thetaRandom
+%     i=i+1;
+%     thetaRandom=thetaGrad;
+%     thetaGrad=thetaGrad- alpha  * X'* (X*thetaGrad - Y);
+%  end
+
+% Using the Hessian matrix as the step size 
+% Hessian is the second order derivative
+% This method involves the inversion of Hessian matrix so it should be used when the Hessian matrix's inverse is not computationally expensive
+
+%% Using hessian or second order derivatives on linear
+%   Hess= X' * X;
+%   thetaHessian=zeros(size(X,2),1);
+%    thetaHessian=thetaHessian- Hess\ ((X'*X)* thetaHessian - X' *Y );
+
+%%% This is an implementation to automatically find the step size in the gradient descent and should be used when the Hessian inversion is expensive
+%% Using Gradient descent on linear objective using backtracking line search
+
+% alpha= 0.5;
+% beta= 0.5;
+% thetaGradLineSearch=zeros(size(X,2),1);
+% thetaRandomLineSearch=randn(size(thetaGradLineSearch));
+% iter=0;
+% iterInner=0;
+% while thetaGradLineSearch ~=thetaRandomLineSearch
+%     t=1;
+%     iter=iter+1;
+%     gradientLinear= X' * (X * thetaGradLineSearch -Y);
+%     while costFunctionLinear(X,Y,thetaGradLineSearch-t* gradientLinear)>costFunctionLinear(X,Y,thetaGradLineSearch)- alpha * t * (gradientLinear' * gradientLinear)
+%         t= beta * t;
+%         iterInner=iterInner+1;
+%     end
+%         thetaRandomLineSearch=thetaGradLineSearch;
+%         thetaGradLineSearch=thetaGradLineSearch- t  * gradientLinear;
+% end
+% 
+% costLinear= costFunctionLinear(X,Y,thetaGradLineSearch);
+
