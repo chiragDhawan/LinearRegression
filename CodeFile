@@ -21,7 +21,7 @@
 % plot(X(:,2),Yhat)
 
 %% Using Gradient descent on linear objective using a random alpha or the step size
-%  Should be used when the inverse of the matrix X' * X is computationally expensive
+%  Can be used when the inverse of the matrix X' * X is computationally expensive
 
 %  alpha= 0.001
 %   thetaGrad=zeros(size(X,2),1);
@@ -38,15 +38,15 @@
 
 % Using the Hessian matrix as the step size 
 % Hessian is the second order derivative
-% This method involves the inversion of Hessian matrix so it should be used when the Hessian matrix's inverse is not computationally expensive
+% This method involves the inversion of Hessian matrix so it can be used when the Hessian matrix's inverse is not computationally expensive
 
 %% Using hessian or second order derivatives on linear
 %   Hess= X' * X;
 %   thetaHessian=zeros(size(X,2),1);
 %    thetaHessian=thetaHessian- Hess\ ((X'*X)* thetaHessian - X' *Y );
 
-%%% This is an implementation to automatically find the step size in the gradient descent and should be used when the Hessian inversion is expensive
-%% Using Gradient descent on linear objective using backtracking line search
+%%% This is an implementation to automatically find the step size in the gradient descent and can be used when the Hessian inversion is expensive
+%%  Using Gradient descent on linear objective using backtracking line search
 
 % alpha= 0.5;
 % beta= 0.5;
