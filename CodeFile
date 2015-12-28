@@ -10,7 +10,7 @@
 %% Linear regression using normal equation 
 % Can be used when the matrix X' * X inverse is not computationally expensive
 
-% theta= ((X' * X) ^ -1) * X' * Y;
+% theta= (X' * X)\  * X' * Y;   %%% Using '\' for inverse 
 % 
 % % % training error
 % Yhat= X*theta;
